@@ -172,6 +172,9 @@ DETONATOR_LOCS: dict[str, list[int]] = {}
 for _i, (_stage_name, _stage_key) in enumerate(STAGES):
     DETONATOR_LOCS[_stage_key] = []
     for _s, _suit in enumerate(DETONATOR_SUITS):
+        # A small fix for the DUMB detonator of MGH grr
+        if _stage_key == 'theMysteriousGlasshouse' and _suit == 'Diamond':
+            continue
         _code = LOC_OFFSET + 600 + (_i * 10) + _s
         _add(f'{_suit} Detonator: {_stage_name}', _code, _stage_name, _stage_key)
         _add_annie(f'{_suit} Detonator: {_stage_name}', _code, _stage_name, _stage_key)
